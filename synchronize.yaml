@@ -1,0 +1,10 @@
+---
+- name: copy many files
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+  - name: update web document root
+    synchronize:
+      src: webfiles/
+      dest: /var/www/html

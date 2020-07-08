@@ -1,0 +1,14 @@
+[lamp]
+ansible1.example.com
+
+[file]
+ansible2.example.com
+
+[win]
+windows.example.com
+
+[win:vars]
+ansible_user=ansible
+ansible_password=@nsible123
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore

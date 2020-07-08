@@ -1,0 +1,19 @@
+---
+- name: clean up webserver
+  hosts: all
+  tasks:
+    - name: stop web
+      service:
+        name: httpd
+        state: stopped
+      notify:
+      - remove httpd
+    - name: remove index.html
+      file:
+        path: /var/www/html/index.html
+        state: absent
+  handlers:
+    - name: remove httpd
+      yum:
+        name: httpd
+        state: absent

@@ -1,0 +1,8 @@
+---
+- name: demonstrate filters
+  hosts: localhost
+  tasks:
+  - name: manipulate a list and check
+    assert:
+      that:
+      - "{{ [ 2, 3, 1, 2, 4, 2 ] | sort | unique | list }} is eq( [ 1, 2, 3, 4 ] )"

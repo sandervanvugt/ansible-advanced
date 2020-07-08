@@ -1,0 +1,18 @@
+---
+- name: restart a server
+  hosts: ansible2.example.com
+  tasks:
+    - name: restart server
+      shell: sleep 2 && shutdown -r now "rebooting, please wait"
+      async: 60
+      poll: 0
+      ignore_errors: false
+
+    - name: waiting for server to come back
+      wait_for:
+        host: "{{ inventory_hostname }}"
+        state: started
+        delay: 30
+        timeout: 300
+        port: 22
+      delegate_to: localhost
