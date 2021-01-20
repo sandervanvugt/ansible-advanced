@@ -1,0 +1,3 @@
+collections:
+  - name: f5networks.f5_modules
+    source: https://cloud.redhat.com/api/automation-hub/
