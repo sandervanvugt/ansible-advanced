@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  tasks:
+  - name: copy source VM template file
+    copy:
+      src: /var/lib/libvirt/images/cka-template.qcow2
+      dest: /var/lib/libvirt/images/{{ item.name }}.qcow2
+    loop: "{{ vms }}"
+  - name: creating VMs
+    virt:
+      name: "{{ item.name }}"
+      command: define
+      xml: "{{ lookup('template', 'vm-template.xml.j2') }}"
+    loop: "{{ vms }}" 

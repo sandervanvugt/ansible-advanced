@@ -1,0 +1,10 @@
+---
+vms:
+- name: test1
+  memory: 512
+  vcpu: 1
+  network: default
+- name: test2
+  memory: 4096
+  vcpu: 2
+  network: default
